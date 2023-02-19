@@ -1,9 +1,9 @@
-# PMAC-healthtech-devs
-<<<<<<< HEAD
-# This is a trial
-=======
-# This is a trial.
-# Another trial
+![](https://github.com/HealthTech-Devs/PMAC-healthtech-devs/blob/develop/HTD.jpg)
 
-# Run npm add react-big-calendar react-datepicker date-fns
->>>>>>> origin/develop
+
+
+Meetings every Sunday @ 10:00 A.M. on Microsoft Teams
+
+When a task is completed, update Jira and assign yourself a new task.
+
+
