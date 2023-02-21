@@ -7,7 +7,11 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor:['active'],
-    },
+      // backgroundImage: {
+      //   'eagleBackgroundImage': "url('/src/pages/photos/statue2LG.jpg')",
+        
+      // }
+    }
  
 
   },
