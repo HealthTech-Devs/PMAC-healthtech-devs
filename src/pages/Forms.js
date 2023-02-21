@@ -5,9 +5,11 @@ import Involvement from './AllForms/AppInfoForm/Involvement'
 
 function Forms() {
   return (
-    <div> <AppAcademicInfo/>
-    <AppPersonalInfo />
-    <Involvement/></div>
+    <div> 
+      <AppAcademicInfo/>
+      <AppPersonalInfo />
+      <Involvement />
+    </div>
   )
 }
 
