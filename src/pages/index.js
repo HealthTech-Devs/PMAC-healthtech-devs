@@ -10,8 +10,7 @@ export default function Home() {
     <>
      <NavbarStudent/>
      <Tabs />
-     <SignUp/>
-     <Login/>
+     
    
     </>
   )
