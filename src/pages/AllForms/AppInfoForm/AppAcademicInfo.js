@@ -1,19 +1,26 @@
   
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import ReactDOM from 'react-dom';
+import FormPDF from '../../components/FormPDF'
 
 
 export default function AppAcademicInfo() {
 
   const {register, handleSubmit, formState: {errors}}= useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    ReactDOM.render(<FormPDF className="mt-10 sm:mt-0" data={data}/>, document.getElementById('PDFView'));
+  }
 
   
     return (
       <>
     
-        <div className="mt-10 sm:mt-0">
+        <div className="mt-10 sm:mt-0" >
+        <div className="mt-10 sm:mt-0" id="PDFView">
+        
+          </div >
           <div >
             
             <div className="mt-10 w-full md:mt-10">
