@@ -41,7 +41,7 @@ export default function NavbarStudent() {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                 
-                <Image src={Logo} class="w-[5rem] " alt="ULM Logo" />
+                <Image src={Logo} className="w-[5rem] " alt="ULM Logo" />
 
                   <div className="hidden md:block">
                     <div className=" border-2 border-gold rounded-full p-2 ml-4  flex items-center md:ml-6">

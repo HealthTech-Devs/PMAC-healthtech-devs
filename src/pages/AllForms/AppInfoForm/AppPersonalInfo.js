@@ -4,16 +4,22 @@ import {useForm} from 'react-hook-form';
 
 export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
 
-  const {register}= useForm();
+  const { register } = useForm();
 
-    const handleChange = (e) => {
-      e.preventDefault();
-      console.log(e.target);
-    }
+  register('firstName', { onChange: (e) => onChangeForm(e) });
+  register('lastName', { onChange: (e) => onChangeForm(e) });
+  register('cwid', { onChange: (e) => onChangeForm(e) });
+  register('number', { onChange: (e) => onChangeForm(e) });
+  register('country', { onChange: (e) => onChangeForm(e) });
+  register('address', { onChange: (e) => onChangeForm(e) });
+  register('city', { onChange: (e) => onChangeForm(e) });
+  register('state', { onChange: (e) => onChangeForm(e) });
+  register('zip', { onChange: (e) => onChangeForm(e) });
+  register('ulm', { onChange: (e) => onChangeForm(e) });
+  register('alternate', { onChange: (e) => onChangeForm(e) });
 
     return (
       <>
-    
         <div className=" sm:mt-0">
           <div >
           
@@ -34,19 +40,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="firstName"
                           id="firstName"
-                          value={formData.firstName}
-                          onChange={(e) => {
-                            onChangeForm
-                            handleChange(e);
-                          }}
+                          defaultValue={formData.firstName}
                           autoComplete="given-name"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.firstName ? 'border-bred' : ''
                           }`}
                           {...register("firstName", {required: true, maxLength:80})}
-                          
                         />
-                        {errors.firstName && (<span class="inline-flex text-sm text-bred">Please enter your First Name.</span>)}
+                        {errors.firstName && (<span className="inline-flex text-sm text-bred">Please enter your First Name.</span>)}
                       </div>
   
                       <div className="col-span-6 sm:col-span-3">
@@ -58,14 +59,13 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           name="lastName"
                           id="lastName"
                           value={formData.lastName} 
-                          onChange={onChangeForm}
                           autoComplete="family-name"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.lastName ? 'border-bred' : ''
                           }`}
                           {...register("lastName", {required: true, maxLength:80})}
                         />
-                        {errors.lastName && (<span class="inline-flex text-sm text-bred">Please enter your Last Name.</span>)}
+                        {errors.lastName && (<span className="inline-flex text-sm text-bred">Please enter your Last Name.</span>)}
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
@@ -76,14 +76,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="cwid"
                           id="cwid"
-                          value={formData.cwid} onChange={onChangeForm}
+                          value={formData.cwid} 
            
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.cwid ? 'border-bred' : ''
                           }`}
                           {...register("cwid", {required: true, minLength:8, maxLength:8})}
                         />
-                        {errors.cwid && (<span class="inline-flex text-sm text-bred">Please enter your correct CWID [xxxx-xxxx].</span>)}
+                        {errors.cwid && (<span className="inline-flex text-sm text-bred">Please enter your correct CWID [xxxx-xxxx].</span>)}
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
@@ -94,13 +94,13 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="number"
                           id="number"
-                          value={formData.number} onChange={onChangeForm}
+                          value={formData.number} 
                           {...register("number", {required: true, minLength: 10, maxLength:10})}
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.number ? 'border-bred' : ''
                           }`}
                         />
-                        {errors.number && (<span class="inline-flex text-sm text-bred">Please enter your correct Phone number [xxx-xxx-xxxx].</span>)}
+                        {errors.number && (<span className="inline-flex text-sm text-bred">Please enter your correct Phone number [xxx-xxx-xxxx].</span>)}
                       </div>
                       
   
@@ -111,6 +111,7 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                         <select
                           id="country"
                           name="country"
+                          defaultValue={formData.country}
                           autoComplete="country-name"
                           className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-green focus:outline-none focus:ring-green sm:text-sm"
                         >
@@ -128,14 +129,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="address"
                           id="address"
-                          value={formData.address} onChange={onChangeForm}
+                          value={formData.address} 
                           autoComplete="street-address"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.address ? 'border-bred' : ''
                           }`}
                           {...register("address", {required: true, maxLength:80})}
                         />
-                        {errors.address && (<span class="inline-flex text-sm text-bred">Please enter your correct Address.</span>)}
+                        {errors.address && (<span className="inline-flex text-sm text-bred">Please enter your correct Address.</span>)}
                       </div>
   
                       <div className="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -146,14 +147,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="city"
                           id="city"
-                          value={formData.city} onChange={onChangeForm}
+                          value={formData.city} 
                           autoComplete="address-level2"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.city ? 'border-bred' : ''
                           }`}
                           {...register("city", {required: true, maxLength:80})}
                         />
-                        {errors.city && (<span class="inline-flex text-sm text-bred">Please enter your correct City.</span>)}
+                        {errors.city && (<span className="inline-flex text-sm text-bred">Please enter your correct City.</span>)}
                       </div>
   
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -164,14 +165,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="state"
                           id="state"
-                          value={formData.state} onChange={onChangeForm}
+                          value={formData.state} 
                           autoComplete="address-level1"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.state ? 'border-bred' : ''
                           }`}
                           {...register("state", {required: true, maxLength:80})}
                         />
-                        {errors.state && (<span class="inline-flex text-sm text-bred">Please enter your correct State/Province.</span>)}
+                        {errors.state && (<span className="inline-flex text-sm text-bred">Please enter your correct State/Province.</span>)}
                       </div>
   
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -182,14 +183,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="zip"
                           id="zip"
-                          value={formData.zip} onChange={onChangeForm}
+                          value={formData.zip} 
                           autoComplete="postal-code"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.zip ? 'border-bred' : ''
                           }`}
                           {...register("zip", {required: true, maxLength:5})}
                         />
-                        {errors.zip && (<span class="inline-flex text-sm text-bred">Please enter your correct Zip/Postal Code [x-xxxxx].</span>)}
+                        {errors.zip && (<span className="inline-flex text-sm text-bred">Please enter your correct Zip/Postal Code [x-xxxxx].</span>)}
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
@@ -200,14 +201,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="ulm"
                           id="ulm"
-                          value={formData.ulm} onChange={onChangeForm}
+                          value={formData.ulm} 
                           autoComplete="email"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.ulm ? 'border-bred' : ''
                           }`}
                           {...register("ulm", {required: true, pattern:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}
                         />
-                        {errors.ulm && (<span class="inline-flex text-sm text-bred">Please enter your correct ULM email address [...@warhawks.ulm.edu].</span>)}
+                        {errors.ulm && (<span className="inline-flex text-sm text-bred">Please enter your correct ULM email address [...@warhawks.ulm.edu].</span>)}
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
@@ -218,14 +219,14 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                           type="text"
                           name="alternate"
                           id="alternate"
-                          value={formData.alternate} onChange={onChangeForm}
+                          value={formData.alternate}
                           autoComplete="email"
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.alternate ? 'border-bred' : ''
                           }`}
                           {...register("alternate", {required: true, pattern:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i})}
                         />
-                        {errors.alternate && (<span class="inline-flex text-sm text-bred">Please enter your correct Alternate email address [...@example.com].</span>)}
+                        {errors.alternate && (<span className="inline-flex text-sm text-bred">Please enter your correct Alternate email address [...@example.com].</span>)}
                       </div>
                     </div>
                   </div>

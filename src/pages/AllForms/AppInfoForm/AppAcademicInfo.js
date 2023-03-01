@@ -6,9 +6,6 @@ import {useForm} from 'react-hook-form';
 export default function AppAcademicInfo({ formData, onChangeForm, errors }) {
 
   const {register} = useForm();
-
-  
-
   
     return (
       <>
@@ -17,7 +14,6 @@ export default function AppAcademicInfo({ formData, onChangeForm, errors }) {
           <div >
             
             <div className="mt-10 w-full md:mt-10">
-              <form >
                 <div className="overflow-hidden shadow sm:rounded-md">
                 <h1>Academic Information</h1>
                   <div className="bg-white px-4 py-5 sm:p-6">
@@ -226,7 +222,6 @@ export default function AppAcademicInfo({ formData, onChangeForm, errors }) {
                     </button>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>

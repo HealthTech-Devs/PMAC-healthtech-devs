@@ -43,7 +43,7 @@ export default function Tabs() {
   })
 
   return (
-    <div class="flex items-center justify-center">
+    <div className="flex items-center justify-center">
     <div className="w-3/4 px-2 py-16 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-bogold p-2">

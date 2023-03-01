@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import AppAcademicInfo from './AppAcademicInfo'
 import Involvement from './Involvement'
 import AppPersonalInfo from './AppPersonalInfo'
-
+// import {useForm} from 'react-hook-form';
 
 
 function AppInfo() {
-
+  // const {register}= useForm();
     const [errors, setErrors] = useState({});
 
     const [formData, setFormData] = useState({
@@ -26,6 +26,7 @@ function AppInfo() {
       });
     
       const handleFormChange = (event) => {
+        event.preventDefault();
         console.log("by");
         const { name, value } = event.target;
         console.log(value);
