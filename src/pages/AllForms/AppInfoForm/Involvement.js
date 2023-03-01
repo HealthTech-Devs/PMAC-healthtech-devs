@@ -4,12 +4,12 @@ import {useForm} from 'react-hook-form';
 
 function Involvement() {
     const {register, handleSubmit, formState: {errors}}= useForm();
-
+    const headingsone = ['Haha', 'Column 2', 'Column 3'];
     const onSubmit = data => console.log(data);
   return (
     <div>
         <div className="mt-10 w-full md:mt-10">
-    <form action="#" method="POST" ><Table/>
+    <form action="#" method="POST" ><Table headings={headingsone}/>
     <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                     <button
                       type="submit"
