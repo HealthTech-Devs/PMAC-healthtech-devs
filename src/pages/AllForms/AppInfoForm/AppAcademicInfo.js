@@ -3,12 +3,9 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 
 
-export default function AppAcademicInfo() {
+export default function AppAcademicInfo({ formData, onChangeForm, errors }) {
 
-  const {register, handleSubmit, formState: {errors}}= useForm();
-
-  const onSubmit = data => console.log(data);
-
+  const {register} = useForm();
   
     return (
       <>
@@ -17,7 +14,6 @@ export default function AppAcademicInfo() {
           <div >
             
             <div className="mt-10 w-full md:mt-10">
-              <form action="#" method="POST" onSubmit={handleSubmit(onSubmit)}>
                 <div className="overflow-hidden shadow sm:rounded-md">
                 <h1>Academic Information</h1>
                   <div className="bg-white px-4 py-5 sm:p-6">
@@ -33,7 +29,8 @@ export default function AppAcademicInfo() {
                           type="text"
                           name="major"
                           id="major"
-                          
+                          value={formData.major}
+                          onChange={(event)=>{onChangeForm(event)}}
                           className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green focus:ring-green sm:text-sm ${
                             errors.major ? 'border-bred' : ''
                           }`}
@@ -225,7 +222,6 @@ export default function AppAcademicInfo() {
                     </button>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>

@@ -1,86 +1,101 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+// import axios from 'axios';
 
-export default function Table() {
-  const [data, setData] = useState([    { id: 1, col1: '', col2: '', col3: '', col4: '' },    { id: 2, col1: '', col2: '', col3: '', col4: '' },  ]);
-
-  const handleDataChange = (id, field, value) => {
-    const newData = data.map((row) => {
-      if (row.id === id) {
-        return { ...row, [field]: value };
-      } else {
-        return row;
-      }
-    });
-    setData(newData);
-  };
-
-  const handleDeleteRow = (id) => {
-    const newData = data.filter((row) => row.id !== id);
-    setData(newData);
-  };
+const MyTable = ({ headings }) => {
+  const [tableData, setTableData] = useState([]);
 
   const handleAddRow = () => {
-    const newRow = { id: data.length + 1, col1: '', col2: '', col3: '', col4: '' };
-    setData([...data, newRow]);
+    event.preventDefault();
+    setTableData(prevState => [
+      ...prevState,
+      { id: Date.now(), column1: '', column2: '', column3: '' },
+    ]);
+  };
+
+  const handleCellChange = (e, rowId, column) => {
+    const newValue = e.target.value;
+    setTableData(prevState => {
+      const updatedRow = prevState.find(row => row.id === rowId);
+      updatedRow[column] = newValue;
+      return [...prevState];
+    });
+  };
+
+  const handleSaveTableData = async () => {
+    event.preventDefault();
+      console.log(tableData);
+   
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto border-collapse border border-gray-400 w-full">
+    <div className="container mx-auto py-8">
+      <table className="border-collapse border border-gray-600">
         <thead>
           <tr>
-            <th className="border border-gray-400 p-2">Heading 1</th>
-            <th className="border border-gray-400 p-2">Heading 2</th>
-            <th className="border border-gray-400 p-2">Heading 3</th>
-            <th className="border border-gray-400 p-2">Heading 4</th>
+            {headings.map(heading => (
+              <th
+                key={heading}
+                className="border border-gray-600 px-4 py-2 font-semibold"
+              >
+                {heading}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {tableData.map(row => (
             <tr key={row.id}>
-              <td className="border border-gray-400 p-2">
+              <td className="border border-gray-600 px-4 py-2">
                 <input
                   type="text"
-                  value={row.col1}
-                  onChange={(event) => handleDataChange(row.id, 'col1', event.target.value)}
-                  className="border border-gray-400 p-1 w-full"
+                  value={row.column1}
+                  className="w-full border-0 focus:outline-none"
+                  onChange={e => handleCellChange(e, row.id, 'column1')}
                 />
               </td>
-              <td className="border border-gray-400 p-2">
+              <td className="border border-gray-600 px-4 py-2">
                 <input
                   type="text"
-                  value={row.col2}
-                  onChange={(event) => handleDataChange(row.id, 'col2', event.target.value)}
-                  className="border border-gray-400 p-1 w-full"
+                  value={row.column2}
+                  className="w-full border-0 focus:outline-none"
+                  onChange={e => handleCellChange(e, row.id, 'column2')}
                 />
               </td>
-              <td className="border border-gray-400 p-2">
+              <td className="border border-gray-600 px-4 py-2">
                 <input
                   type="text"
-                  value={row.col3}
-                  onChange={(event) => handleDataChange(row.id, 'col3', event.target.value)}
-                  className="border border-gray-400 p-1 w-full"
+                  value={row.column3}
+                  className="w-full border-0 focus:outline-none"
+                  onChange={e => handleCellChange(e, row.id, 'column3')}
                 />
-              </td>
-              <td className="border border-gray-400 p-2">
-                <input
-                  type="text"
-                  value={row.col4}
-                  onChange={(event) => handleDataChange(row.id, 'col4', event.target.value)}
-                  className="border border-gray-400 p-1 w-full"
-                />
-              </td>
-              <td className="border border-gray-400 p-2">
-                <button
-                  onClick={() => handleDeleteRow(row.id)}
-                  className="bg-red-500 hover:bg-red-600 text-white rounded-md py-1 px-2"
-                >
-                  Delete
-                </button>
               </td>
             </tr>
           ))}
+          <tr>
+            <td colSpan={3} className="border border-gray-600 px-4 py-2">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleAddRow}
+              >
+                Add Row
+              </button>
+            </td>
+          </tr>
         </tbody>
-        </table>
-        </div>
-  )}
+      </table>
+      <div className="mt-4">
+        <button
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+          onClick={handleSaveTableData}
+        >
+          Save Table Data
+        </button>
+        <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default MyTable;

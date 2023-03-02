@@ -1,14 +1,11 @@
 import React from 'react'
-import AppPersonalInfo from './AllForms/AppInfoForm/AppPersonalInfo'
-import AppAcademicInfo from './AllForms/AppInfoForm/AppAcademicInfo'
-import Involvement from './AllForms/AppInfoForm/Involvement'
+import AppInfo from './AllForms/AppInfoForm/AppInfo'
+
 
 function Forms() {
   return (
     <div> 
-      <AppAcademicInfo/>
-      <AppPersonalInfo />
-      <Involvement />
+       <AppInfo />
     </div>
   )
 }
