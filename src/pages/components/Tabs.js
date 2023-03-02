@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Tab } from '@headlessui/react';
 import Forms from '../Forms'
 import Schedular from '../schedular';
+import AppStatus from './AppStatus';
 
 
 
@@ -14,7 +15,7 @@ export default function Tabs() {
     Dashboard: [
       {
         id: 1,
-        title: "Dashboard",
+        title: <AppStatus />,
         
       },
      
