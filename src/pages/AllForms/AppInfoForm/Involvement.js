@@ -9,7 +9,7 @@ function Involvement() {
   return (
     <div>
         <div className="mt-10 w-full md:mt-10">
-    {/* <form action="#" method="POST" ><Table headings={headingsone}/> */}
+        <form action="#" method="POST" ><Table headings={headingsone}/> 
     <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                     <button
                       type="submit"
@@ -19,7 +19,7 @@ function Involvement() {
                     </button>
                   </div>
                 
-              {/* </form> */}
+               </form> 
               </div>
               </div>
   )
