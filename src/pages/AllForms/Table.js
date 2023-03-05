@@ -28,7 +28,7 @@ const MyTable = ({ headings }) => {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto ">
       <table className="border-collapse border border-gray-600">
         <thead>
           <tr>
@@ -74,7 +74,7 @@ const MyTable = ({ headings }) => {
           <tr>
             <td colSpan={3} className="border border-gray-600 px-4 py-2">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded"
                 onClick={handleAddRow}
               >
                 Add Row
@@ -85,12 +85,12 @@ const MyTable = ({ headings }) => {
       </table>
       <div className="mt-4">
         <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+          className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded mr-4"
           onClick={handleSaveTableData}
         >
           Save Table Data
         </button>
-        <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        <button className="bg-bred hover:bg-red text-white font-bold py-2 px-4 rounded">
           Cancel
         </button>
       </div>

@@ -37,7 +37,7 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
             <div className=" w-full md:mt-10">
               
                 <div className="overflow-hidden shadow sm:rounded-md">
-            
+                <h1>Personal Information</h1>
                   <div className="bg-white px-4 py-5 sm:p-6">
                     
                     <div className="grid grid-cols-6 gap-6">
