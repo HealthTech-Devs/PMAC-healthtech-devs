@@ -206,7 +206,7 @@ provide the letter deadline date.</span> </h1>
 
   
 
-      <button className="bg-green text-white font-bold py-2 px-4 rounded" type="button" onClick={handleAddRow}>Add Row</button>
+      <button className="bg-green text-white font-bold py-2 px-4 rounded mt-3" type="button" onClick={handleAddRow}>Add Row</button>
         <div className="flex justify-center"><button className="bg-green text-white font-bold py-2 px-4 rounded">
         Submit
       </button></div>
