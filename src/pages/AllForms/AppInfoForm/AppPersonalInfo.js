@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
+import AppAcademicInfo from './AppAcademicInfo';
+import Table from '../Table'
 
 
 export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
 
   const { register } = useForm();
+  
+
 
   register('firstName', { onChange: (e) => onChangeForm(e) });
   register('lastName', { onChange: (e) => onChangeForm(e) });
@@ -18,15 +22,22 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
   register('ulm', { onChange: (e) => onChangeForm(e) });
   register('alternate', { onChange: (e) => onChangeForm(e) });
 
+  // const [nextPages, setNextPages] = useState(false);
+
+  // const nextPage = () => {
+  //   setNextPages(true);
+  // }
+
     return (
       <>
-        <div className=" sm:mt-0">
+     {/* { !nextPages &&  */}
+      <div className=" sm:mt-0">
           <div >
           
             <div className=" w-full md:mt-10">
               
                 <div className="overflow-hidden shadow sm:rounded-md">
-            
+                <h1>Personal Information</h1>
                   <div className="bg-white px-4 py-5 sm:p-6">
                     
                     <div className="grid grid-cols-6 gap-6">
@@ -230,13 +241,12 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
                       </div>
                     </div>
                   </div>
-                  <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                    <button
-                     
-                      className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  <div className="bg-red px-4 py-3 text-right sm:px-6">
+                  <div 
+                      className="inline-flex justify-center rounded-md border border-transparent bg-green py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       Next
-                    </button>
+                    </div>
                   </div>
                 </div>
              
@@ -245,6 +255,8 @@ export default function AppPersonalInfo({ formData, onChangeForm, errors }) {
           </div>
         
         </div>
+
+        {/* }{nextPages && <AppA />} */}
   
         <div className="hidden sm:block" aria-hidden="true">
           <div className="py-5">
