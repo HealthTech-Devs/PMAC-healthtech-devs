@@ -4,11 +4,15 @@ import {React, useState} from 'react';
 export default function InfoReleaseForm() {
   const [rows, setRows] = useState([{ name: '', date: '', phone: '', address: '' }])
   const [otherValues, setOtherValues] = useState({ choices: []})
+  const [tableError, setTableError] = useState(false)
+  const [checkboxError, setCheckboxError] = useState(false)
+  
   
 
   const handleRowChange = (index, field, value) => {
     const newRows = [...rows]
     newRows[index][field] = value
+    setTableError(false)
     setRows(newRows)
   } 
 
@@ -16,6 +20,7 @@ export default function InfoReleaseForm() {
     if (field === 'choices') {
       const checkedChoices = [...otherValues.choices]
       if (value.checked) {
+        
         checkedChoices.push(value.value)
       } else {
         const index = checkedChoices.indexOf(value.value)
@@ -23,8 +28,10 @@ export default function InfoReleaseForm() {
           checkedChoices.splice(index, 1)
         }
       }
+      setCheckboxError(false)
       setOtherValues(prevValues => ({ ...prevValues, [field]: checkedChoices }))
     } else {
+      
       setOtherValues(prevValues => ({ ...prevValues, [field]: value }))
     }
   
@@ -35,7 +42,32 @@ export default function InfoReleaseForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const data = { rows, ...otherValues }
+    // Check if all rows have values
+  const rowsHaveValues = rows.every((row) => {
+    return row.name && row.date && row.phone && row.address
+  })
+
+  // Check if choices are selected
+  
+  const checkedChoices = [...otherValues.choices]
+  let checkedOption = 0 
+  checkedChoices.map((choices)=> {{if (choices=='A'||choices=='B'){checkedOption++}}})
+  const choicesSelected = checkedOption == 2
+  console.log(checkedOption)
+  // Check if both conditions are met
+  if (rowsHaveValues && choicesSelected ) {
+    // Submit the form
     console.log(data);
+   
+    // ...
+  } else {
+    if (!rowsHaveValues){setTableError(true)}
+    if (!choicesSelected) {setCheckboxError(true)
+    }
+   
+    
+  }
+    
     // Send data to API
     // send form data to API
   };
@@ -44,9 +76,10 @@ export default function InfoReleaseForm() {
     setRows([...rows, { name: '', date: '', phone: '', address: '' }])
   }
 
+  const errorMessage = ['Error! Please select at-least the first two checkboxes.','Error! Please fill at-least one row with correct information.']
   return (
 
-       
+   
     <div className="mt-10 sm:mt-0"> 
               
               <div className="mt-10 w-full md:mt-10">
@@ -69,6 +102,7 @@ export default function InfoReleaseForm() {
 
    
     <form onSubmit={handleSubmit}>
+   
      
       <div className="mb-4">
         <label className="block text-black font-bold mb-2">
@@ -76,15 +110,15 @@ export default function InfoReleaseForm() {
         </label>
         <fieldset className='ml-9'>
      
-
+        
         
      <div className=" leading-relaxed text-justify">
-       <input type="checkbox" name="choice" value="A" onChange={event => handleOtherValuesChange('choices', event.target)} />
+       <input type="checkbox" name="choice" value="A" onChange={event => handleOtherValuesChange('choices', event.target)}  />
        <span className='ml-3'> I hereby authorize the Pre-Medical Advisory Committee of the University of Louisiana at Monroe
 to release the evaluation of the undersigned to the below listed professional schools and/or programs.</span>
      </div >
      <div className=" leading-relaxed text-justify">
-       <input type="checkbox" name="choice" value="B" onChange={event => handleOtherValuesChange('choices', event.target)} />
+       <input type="checkbox" name="choice" value="B" onChange={event => handleOtherValuesChange('choices', event.target)}  />
        <span className='ml-3'>   I will allow the committee members to evaluate my performance based on my academic record,
 submitted materials, and the committee interview. I authorize the committee to prepare an evaluation
 letter for me for the purposes of applying to the professional schools and/or programs listed below. I
@@ -92,7 +126,7 @@ understand that their evaluation and all items considered in making this recomme
 confidential and I waive my right to see such evaluation.</span>
      </div>
      <div className=" leading-relaxed text-justify">
-       <input type="checkbox" name="choice" value="C" onChange={event => handleOtherValuesChange('choices', event.target)} />
+       <input type="checkbox" name="choice" value="C" onChange={event => handleOtherValuesChange('choices', event.target)}  />
       <span className='ml-3'>
       I will allow my name to be released to the University if accepted to a professional school. The
 University may use my name and the name of the professional school/ and or program for statistics and
@@ -101,7 +135,9 @@ Committee and the University of Louisiana at Monroe.
 </span> 
      </div>
    </fieldset>
+   
       </div>
+      {checkboxError && <div className='text-bred mt-0'> {errorMessage[0]} </div> }
   
   <h1 className="mb-5 mt-7 text-1xl font-bold">By signing below, I understand that I am waiving my right to review the evaluation material and agree to the release of
 my name and school upon acceptance.</h1>
@@ -165,6 +201,7 @@ my name and school upon acceptance.</h1>
                       </div>
                       </div>
 
+                    
                       <h1 className="mt-7 text-1xl font-bold">Please provide the physical addresses of each school you are applying to if those schools require
 individual letters. If you are using an application system, please list the School and then the
 Application service.</h1>
@@ -202,11 +239,14 @@ provide the letter deadline date.</span> </h1>
       ))}
     </tbody>
   </table>
+
 </div>
 
-  
+{tableError && <div className='text-bred mt-0'> {errorMessage[1]} </div> }
 
-      <button className="bg-green text-white font-bold py-2 px-4 rounded mt-3" type="button" onClick={handleAddRow}>Add Row</button>
+      <button className="bg-green text-white font-bold py-2 px-4 rounded mt-5 " type="button" onClick={handleAddRow}>Add Row</button>
+
+      
         <div className="flex justify-center"><button className="bg-green text-white font-bold py-2 px-4 rounded">
         Submit
       </button></div>
