@@ -49,6 +49,7 @@ function Schedular() {
 
     function handleAddEvent() {
         setAllEvents([...allEvents, newEvent])
+        console.log([...allEvents, newEvent]);
     }
 
     return (
@@ -64,9 +65,9 @@ function Schedular() {
                 <ReactDatePicker placeholderText="End Date" 
                 selected={newEvent.end} onChange={(end) => setNewEvent({...newEvent, end})} />
             </div>
-            <Calendar localizer={localizer} events={events} 
+            <Calendar localizer={localizer} events={allEvents} 
             startAccessor='start' endAccessor='end' style={{height: 500, margin: '50px'}} />
-            <button style={{marginTop: '10px'}} onClick={handleAddEvent}>Add Event</button>
+            <button style={{marginTop: '10px', position:"relative"}} onClick={handleAddEvent}>Add Event</button>
         </div>
 
     );
