@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import Logo from './../photos/ulm_academic_maroon_white.png';
+import signout from './../Landingpage';
 
 const user = {
   name: 'Tom Cook',
@@ -13,7 +14,7 @@ const user = {
 
 const userNavigation = [
   { name: 'Your Profile', href: 'www.google.com' },
-  { name: 'Sign out', href: '' },
+  { name: 'Sign out', href: './../Landingpage' },
 ]
  
 function classNames(...classes) {
@@ -21,7 +22,7 @@ function classNames(...classes) {
 }
 
 function click () {
-  console.log("Signed OUT");
+  console.log("Signed Out");
 }
 
 export default function NavbarStudent() {
@@ -66,7 +67,8 @@ export default function NavbarStudent() {
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <button
+                                  <a
+                                    href={item.href}
                                     onClick = {click}
                                     className={classNames(
                                         active ? 'bg-gray' : '',
@@ -76,7 +78,7 @@ export default function NavbarStudent() {
                                   >
                                     {item.name}
 
-                                  </button>
+                                  </a>
                                 )}
                               </Menu.Item>
                             ))}
