@@ -13,11 +13,15 @@ const user = {
 
 const userNavigation = [
   { name: 'Your Profile', href: 'www.google.com' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign out', href: '' },
 ]
  
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
+}
+
+function click () {
+  console.log("Signed OUT");
 }
 
 export default function NavbarStudent() {
@@ -62,8 +66,8 @@ export default function NavbarStudent() {
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <a
-                                    href={item.href}
+                                  <button
+                                    onClick = {click}
                                     className={classNames(
                                         active ? 'bg-gray' : '',
                                         'block px-4 py-2 text-sm text-gray-700'
@@ -72,7 +76,7 @@ export default function NavbarStudent() {
                                   >
                                     {item.name}
 
-                                  </a>
+                                  </button>
                                 )}
                               </Menu.Item>
                             ))}

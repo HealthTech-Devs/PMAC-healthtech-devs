@@ -11,9 +11,9 @@ import Landingpage from './Landingpage'
 export default function Home() {
   return (
     <>
-    <Landingpage />
-     {/* <NavbarStudent/>
-     <Tabs /> */}
+    {/* <Landingpage /> */}
+     <NavbarStudent/>
+     <Tabs />
      
     </>
   )
