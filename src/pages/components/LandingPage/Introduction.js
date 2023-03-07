@@ -29,7 +29,11 @@ export default function Introduction  () {
 
   return (
     <>
-   
+    <div>
+        <div className=' mb-1 text-4xl text-red font-bold flex justify-center items-center '>University of Louisiana at Monroe Pre-Medical Advisory Committee</div>
+        <div className='mb-5 font-bold text-sm text-red opacity-50 italic flex justify-center items-center'>Helping you get one step closer to your dream!</div>
+    </div>
+    
     <div >
     {cards.map((card) => (
       <Card key={card.id} title={card.title} description={card.description} />
