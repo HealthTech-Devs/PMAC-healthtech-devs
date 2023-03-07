@@ -26,6 +26,7 @@ module.exports = {
       'white': '#f8fafc',
       'bogold': '#bd955a',
       'green': '#22c55e'
+      
     }
   },
   plugins: [

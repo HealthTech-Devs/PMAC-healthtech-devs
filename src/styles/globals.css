@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.bg-image {
+    background-image: url('/photos/statue2LG.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center center;
+  }
